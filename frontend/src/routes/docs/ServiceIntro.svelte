@@ -4,5 +4,5 @@
 
 <p>
     <span class="font-semibold">Github: </span>
-    <a class="text-gray-500 text-sm" href="https://github.com/InfinityBotList/{github}">See '{github}'</a>
+    <a class="text-gray-500" href="https://github.com/InfinityBotList/{github}">See '{github}'</a>
 </p>
