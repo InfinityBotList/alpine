@@ -1,7 +1,7 @@
 package main
 
 import (
-	"alpine/plugins/foo"
+	"alpine/plugins/docs"
 
 	"github.com/infinitybotlist/sysmanage-web/plugins/actions"
 	"github.com/infinitybotlist/sysmanage-web/plugins/frontend"
@@ -13,28 +13,34 @@ import (
 var meta = types.ServerMeta{
 	ConfigVersion: 1,
 	Port:          10394,
-	Plugins: map[string]types.Plugin{
+	Plugins: []types.Plugin{
 		// Persist has no frotend, it is a backend plugin
-		"persist": {
+		{
+			ID:   persist.ID,
 			Init: persist.InitPlugin,
 		},
-		"actions": {
+		{
+			ID:   actions.ID,
 			Init: actions.InitPlugin,
 			Frontend: types.Provider{
 				Provider: "@core",
 			},
 		},
 		// Frontend has no frontend, it is a backend plugin
-		"frontend": {
+		{
+			ID:   frontend.ID,
 			Init: frontend.InitPlugin,
 		},
-		"foo": {
-			Init: foo.InitPlugin,
+		// Example of a custom plugin
+		{
+			ID:   docs.ID,
+			Init: docs.InitPlugin,
 			Frontend: types.Provider{
 				Provider: "frontend/extplugins/foo", // This is the path to the plugin's frontend
 			},
 		},
-		"logger": {
+		{
+			ID:   logger.ID,
 			Init: logger.InitPlugin,
 		},
 	},
@@ -65,7 +71,9 @@ var meta = types.ServerMeta{
 			"frontend/src/lib/images/logo.png": "static/favicon.png",
 		},
 	},
-	FrontendServer: &types.FrontendServer{
+	// Enable this for using a node server
+	//
+	/*FrontendServer: &types.FrontendServer{
 		Host:                "http://localhost:10385",
 		ExtraHeadersToAllow: []string{},
 		Dir:                 "frontend",
@@ -75,5 +83,5 @@ var meta = types.ServerMeta{
 			"PORT=10385",
 			"HOST=127.0.0.1",
 		},
-	},
+	},*/
 }
