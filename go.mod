@@ -2,7 +2,7 @@ module alpine
 
 go 1.20
 
-require github.com/infinitybotlist/sysmanage-web v0.0.0-20230621084007-60bbbbe94bd1
+require github.com/infinitybotlist/sysmanage-web v0.0.0-20230621143149-2daae2a63ca6
 
 require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
